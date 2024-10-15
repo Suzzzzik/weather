@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" th:href="@{/main.css}">
+
+</head>
+<body class="bg-slate-50">
+<main class="container mx-auto py-8 flex justify-center align-middle">
+  <div class="mt-8">
+    <div class="w-full max-w-xs">
+      <div th:if="${city}" class="flex flex-col items-center text-left bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h3 class="block text-gray-700 text-sm font-bold mb-2">Current City</h3>
+        <h2 class="text-2xl font-bold mb-4" th:text="${city}"></h2>
+        <img th:src="@{${conditionIcon}}" alt="Weather icon" class="w-16 h-16">
+        <p>Condition: <span th:text="${conditionText}"></span></p>
+        <p>Temperature: <span th:text="${temperature}"></span>°C</p>
+        <p>Feels like: <span th:text="${feelsLike}"></span>°C</p>
+        <p>Humidity: <span th:text="${humidity}"></span>%</p>
+        <p>Wind speed: <span th:text="${windSpeed}"></span> km/h</p>
+      </div>
+      <form action="/search" method="get" class="flex justify-center mt-5">
+        <input type="text" name="city" placeholder="Enter city" class="border p-2 rounded-l">
+        <button type="submit" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded-r">Search</button>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>
